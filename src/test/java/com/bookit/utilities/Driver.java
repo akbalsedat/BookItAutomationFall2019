@@ -134,6 +134,32 @@ public class Driver {
                         e.printStackTrace();
                     }
                     break;
+                case "browser-stack-ios":
+                    DesiredCapabilities capsIOS = new DesiredCapabilities();
+                    capsIOS.setCapability("browserName", "iPhone");
+                    capsIOS.setCapability("device", "iPhone 11 Pro Max");
+                    capsIOS.setCapability("realMobile", "true");
+                    capsIOS.setCapability("os_version", "13");
+                    capsIOS.setCapability("name", "BookIT Automation");
+                    try {
+                        driverPool.set(new RemoteWebDriver(new URL(URL), capsIOS));
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "browser-stack-android":
+                    DesiredCapabilities capsAndroid = new DesiredCapabilities();
+                    capsAndroid.setCapability("browserName", "android");
+                    capsAndroid.setCapability("device", "Samsung Galaxy S20 Ultra");
+                    capsAndroid.setCapability("realMobile", "true");
+                    capsAndroid.setCapability("os_version", "10.0");
+                    capsAndroid.setCapability("name", "BookIT Automation");
+                    try {
+                        driverPool.set(new RemoteWebDriver(new URL(URL), capsAndroid));
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                    break;
                 default:
                     throw new RuntimeException("Wrong browser name!");
             }
