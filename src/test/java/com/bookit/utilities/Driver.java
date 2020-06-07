@@ -10,12 +10,16 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Driver {
 
     //same for everyone
     private static final ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+    public static final String USERNAME = "vasylfomiuk1";
+    public static final String AUTOMATE_KEY = "shPeppvXmzdSTZqAZH3f";
+    public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
     //so no one can create object of Driver class
     //everyone should call static getter method instead
@@ -115,6 +119,20 @@ public class Driver {
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
                     driverPool.set(new FirefoxDriver());
+                    break;
+                case "browser-stack-chrome":
+                    DesiredCapabilities caps = new DesiredCapabilities();
+                    caps.setCapability("browser", "Chrome");
+                    caps.setCapability("browser_version", "83.0");
+                    caps.setCapability("os", "Windows");
+                    caps.setCapability("os_version", "10");
+                    caps.setCapability("resolution", "1920x1080");
+                    caps.setCapability("name", "BookIT Automation");
+                    try {
+                        driverPool.set(new RemoteWebDriver(new URL(URL), caps));
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 default:
                     throw new RuntimeException("Wrong browser name!");
