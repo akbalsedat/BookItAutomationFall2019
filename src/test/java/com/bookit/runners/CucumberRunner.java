@@ -6,15 +6,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        glue = "com/bookit/step_definitions",
         features = "src/test/resources/features",
+        glue = "com/bookit/step_definitions",
         plugin = {
                 "json:target/cucumber.json"
-
         },
-        tags = "@ui",
+        tags = " @verify_number_of_rooms",
         dryRun = false
-
 )
 public class CucumberRunner {
 }

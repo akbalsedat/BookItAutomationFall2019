@@ -22,7 +22,8 @@ public class Environment {
         String environment = ConfigurationReader.getProperty("environment");
         try {
             //https://docs.oracle.com/javase/tutorial/java/data/numberformat.html
-            String path = System.getProperty("user.dir") + String.format("/src/test/resources/environment/%s.properties", environment);
+            String path = System.getProperty("user.dir") +
+                    String.format("/src/test/resources/environment/%s.properties", environment);
             FileInputStream input = new FileInputStream(path);
             properties = new Properties();
             properties.load(input);

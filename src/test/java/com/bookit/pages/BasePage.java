@@ -3,10 +3,8 @@ package com.bookit.pages;
 import com.bookit.utilities.BrowserUtilities;
 import com.bookit.utilities.ConfigurationReader;
 import com.bookit.utilities.Driver;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,7 +25,6 @@ public abstract class BasePage {
     protected WebElement navBarToggle;
 
     protected WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
-    protected Actions actions = new Actions(Driver.getDriver());
     protected String browser = ConfigurationReader.getProperty("browser").toLowerCase();
 
 
